@@ -1,114 +1,208 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import React from "react";
+import CardRecommendedTopic from "@/components/home/cardRecommendedTopic.component";
+import DefaultLayout from "@/layouts/defaultLayout";
+import Banner from "@/components/home/banner.component";
+import Announce from "@/components/home/announce.component";
+import ImageRecommendedTopic1 from "@/image/recommendedTopic/topic-1.png";
+import ImageRecommendedTopic2 from "@/image/recommendedTopic/topic-2.png";
+import ImageTrendTopic1 from "@/image/trendTopic/topic-1.png";
+import ImageTrendTopic2 from "@/image/trendTopic/topic-2.png";
+import profile from "@/image/recommendedTopic/profile.png";
+import CardTrendTopic from "@/components/home/cardTrendTopic.component";
+import { Box } from "@mui/material";
 
-const inter = Inter({ subsets: ["latin"] });
+import indexStyle from "@/styles/pages";
 
-export default function Home() {
+const Home: React.FC = () => {
+  const { classes } = indexStyle();
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  const dataRecommendedTopic = {
+    recommendedTopic: [
+      {
+        title:
+          "เชียร์สด ! แบดมินตัน YONEX French Open 2024 : รอบก่อนรองชนะเลิศ (8 มี.ค. 67) (คู่แรกเวลา 16.00 น.)",
+        name: "Stamp-Badminton",
+        dateTime: "19 ชั่วโมง",
+        commentTotal: "360",
+        image: ImageRecommendedTopic1,
+        avatar: profile,
+      },
+      {
+        title: "อ.โทริยาม่า อากิระ  เสียชีวิตแล้ว",
+        name: "แฮมมะ",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "121",
+        image: ImageRecommendedTopic2,
+        avatar: profile,
+      },
+      {
+        title: "แฟนทำความสะอาดบ้านน่ากลัวมากครับ",
+        name: "สมาชิกหมายเลข 8007148",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "125",
+        image: ImageRecommendedTopic1,
+        avatar: profile,
+      },
+      {
+        title:
+          "เชียร์สด ! แบดมินตัน YONEX French Open 2024 : รอบก่อนรองชนะเลิศ (8 มี.ค. 67) (คู่แรกเวลา 16.00 น.)",
+        name: "Stamp-Badminton",
+        dateTime: "19 ชั่วโมง",
+        commentTotal: "360",
+        image: ImageRecommendedTopic1,
+        avatar: profile,
+      },
+      {
+        title: "อ.โทริยาม่า อากิระ  เสียชีวิตแล้ว",
+        name: "แฮมมะ",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "121",
+        image: ImageRecommendedTopic2,
+        avatar: profile,
+      },
+      {
+        title: "แฟนทำความสะอาดบ้านน่ากลัวมากครับ",
+        name: "สมาชิกหมายเลข 8007148",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "125",
+        image: ImageRecommendedTopic1,
+        avatar: profile,
+      },
+      {
+        title:
+          "เชียร์สด ! แบดมินตัน YONEX French Open 2024 : รอบก่อนรองชนะเลิศ (8 มี.ค. 67) (คู่แรกเวลา 16.00 น.)",
+        name: "Stamp-Badminton",
+        dateTime: "19 ชั่วโมง",
+        commentTotal: "360",
+        image: ImageRecommendedTopic1,
+        avatar: profile,
+      },
+      {
+        title: "อ.โทริยาม่า อากิระ  เสียชีวิตแล้ว",
+        name: "แฮมมะ",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "121",
+        image: ImageRecommendedTopic2,
+        avatar: profile,
+      },
+      {
+        title: "แฟนทำความสะอาดบ้านน่ากลัวมากครับ",
+        name: "สมาชิกหมายเลข 8007148",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "125",
+        image: ImageRecommendedTopic1,
+        avatar: profile,
+      },
+    ],
+  };
+
+  const dataTrendTopic = {
+    trendTopic: [
+      {
+        title: "หิวข้าว",
+        name: "Stamp-Badminton",
+        dateTime: "19 ชั่วโมง",
+        commentTotal: "360",
+        image: ImageTrendTopic1,
+        avatar: profile,
+      },
+      {
+        title: "อ.โทริยาม่า อากิระ  เสียชีวิตแล้ว",
+        name: "แฮมมะ",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "121",
+        image: ImageTrendTopic2,
+        avatar: profile,
+      },
+      {
+        title: "แฟนทำกับข้าวน่ากลัวมากครับ",
+        name: "สมาชิกหมายเลข 8007148",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "125",
+        image: ImageTrendTopic1,
+        avatar: profile,
+      },
+      {
+        title: "หิวข้าว",
+        name: "Stamp-Badminton",
+        dateTime: "19 ชั่วโมง",
+        commentTotal: "360",
+        image: ImageTrendTopic1,
+        avatar: profile,
+      },
+      {
+        title: "อ.โทริยาม่า อากิระ  เสียชีวิตแล้ว",
+        name: "แฮมมะ",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "121",
+        image: ImageTrendTopic2,
+        avatar: profile,
+      },
+      {
+        title: "แฟนทำกับข้าวน่ากลัวมากครับ",
+        name: "สมาชิกหมายเลข 8007148",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "125",
+        image: ImageTrendTopic1,
+        avatar: profile,
+      },
+      {
+        title: "หิวข้าว",
+        name: "Stamp-Badminton",
+        dateTime: "19 ชั่วโมง",
+        commentTotal: "360",
+        image: ImageTrendTopic1,
+        avatar: profile,
+      },
+      {
+        title: "อ.โทริยาม่า อากิระ  เสียชีวิตแล้ว",
+        name: "แฮมมะ",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "121",
+        image: ImageTrendTopic2,
+        avatar: profile,
+      },
+      {
+        title: "แฟนทำกับข้าวน่ากลัวมากครับ",
+        name: "สมาชิกหมายเลข 8007148",
+        dateTime: " 8 มี.ค.",
+        commentTotal: "125",
+        image: ImageTrendTopic1,
+        avatar: profile,
+      },
+    ],
+  };
+
+  React.useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
-    <>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Generated by create next app" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-    </>
+    <DefaultLayout>
+      <Box className={classes.paddingBanner}>
+        <Banner />
+      </Box>
+      <Box className={classes.paddingAll}>
+        <Announce />
+      </Box>
+      <Box className={classes.paddingAll}>
+        <CardRecommendedTopic
+          dataRecommendedTopic={dataRecommendedTopic.recommendedTopic}
+          loading={loading}
+        />
+      </Box>
+      <Box className={classes.paddingAll}>
+        <CardTrendTopic
+          dataTrendTopic={dataTrendTopic.trendTopic}
+          loading={loading}
+        />
+      </Box>
+    </DefaultLayout>
   );
-}
+};
+
+export default Home;
